@@ -446,7 +446,8 @@ namespace Microsoft.Xna.Framework
 				{
 					SDL.SDL_RestoreWindow(window);
 					SDL.SDL_SetWindowSize(window, clientWidth, clientHeight);
-					center = true;
+					//TODO: Until I figure out something better or someone clues me in, I am blocking centering here. I hated it in XNA and I hate it here.
+					//center = true;
 				}
 			}
 
@@ -466,7 +467,8 @@ namespace Microsoft.Xna.Framework
 			{
 				SDL.SDL_SetWindowFullscreen(window, 0);
 				resultDeviceName = screenDeviceName;
-				center = true;
+				//TODO: Until I figure out something better or someone clues me in, I am blocking centering here. I hated it in XNA and I hate it here.
+				//center = true;
 			}
 
 			// Window always gets centered on changes, per XNA behavior
