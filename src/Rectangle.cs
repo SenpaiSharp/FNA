@@ -228,6 +228,18 @@ namespace Microsoft.Xna.Framework
 			Height = height;
 		}
 
+		/// <summary>
+		/// Creates a Rectangle with the specified position and size.
+		/// </summary>
+		/// <param name="position">Top left coordinate of the rectangle represented by Point.X and Point.Y </param>
+		/// <param name="size">The width and height of the rectangle. Point.X = Width, Point.Y = Height.</param>
+		public Rectangle(Point position, Point size)
+		{
+			X = position.X;
+			Y = position.Y;
+			Width = size.X;
+			Height = size.Y;
+		}
 		#endregion
 
 		#region Public Methods
