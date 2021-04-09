@@ -183,6 +183,7 @@ namespace Microsoft.Xna.Framework
 			int clientWidth,
 			int clientHeight,
 			bool wantsFullscreen,
+			bool centerOutOfFullscreen,
 			string screenDeviceName,
 			ref string resultDeviceName
 		);
