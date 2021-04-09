@@ -139,6 +139,14 @@ namespace Microsoft.Xna.Framework
 			);
 		}
 
+		/// <summary>
+		/// Creates a Vector2 of this Point.
+		/// </summary>
+		/// <returns>Vector2 of Point.X and Point.Y</returns>
+		public Vector2 ToVector2()
+		{
+			return new Vector2(X, Y);
+		}
 		#endregion
 
 		#region Public Static Operators
