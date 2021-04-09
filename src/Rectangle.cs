@@ -124,6 +124,28 @@ namespace Microsoft.Xna.Framework
 			}
 		}
 
+		/// <summary>
+		/// The size of the rectangle, respresented by a Point. X = Width, Y = Height. 
+		/// </summary>
+		public Point Size
+		{
+			get
+			{
+				return new Point(Width, Height);
+			}
+		}
+
+		/// <summary>
+		/// The area of the rectangle. Width * Height
+		/// </summary>
+		public int Area
+		{
+			get
+			{
+				return Width * Height;
+			}
+		}
+
 		#endregion
 
 		#region Public Static Properties
