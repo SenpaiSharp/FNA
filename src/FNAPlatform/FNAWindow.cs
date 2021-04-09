@@ -84,11 +84,6 @@ namespace Microsoft.Xna.Framework
 			}
 		}
 
-		/// <summary>
-		/// Determines whether the Window should be centered to its display when coming out of Fullscreen. True by default.
-		/// </summary>
-		public bool CenterOutOfFullScreen { get; set; } = true;
-
 		#endregion
 
 		#region Private Variables
