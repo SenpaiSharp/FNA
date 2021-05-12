@@ -2,7 +2,7 @@
 Mostly for my convenience but if anything seems useful, feel free to take advantage of it.
 I will do my best to maintain this against the main branch.
 
-GameWindow has a property that can determine whether wentering when coming out of fullscreen should happen, CenterOutOfFullScreen. It is true (enabled) by default, to mimick XNA behavoir.
+GameWindow has a property that can determine whether centering when coming out of fullscreen should happen, CenterOutOfFullScreen. It is true (enabled) by default, to mimick XNA behavoir.
 
 The SongCollection class has publicly accessible static constructors. I have never known why this seemingly fully functional class was sealed up beyond usability.
 
