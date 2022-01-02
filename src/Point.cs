@@ -140,17 +140,25 @@ namespace Microsoft.Xna.Framework
 			);
 		}
 
-		#endregion
+        /// <summary>
+        /// Creates a Vector2 of this Point.
+        /// </summary>
+        /// <returns>Vector2 of Point.X and Point.Y</returns>
+        public Vector2 ToVector2()
+        {
+            return new Vector2(X, Y);
+        }
+        #endregion
 
-		#region Public Static Operators
+        #region Public Static Operators
 
-		/// <summary>
-		/// Adds two points.
-		/// </summary>
-		/// <param name="value1">Source <see cref="Point"/> on the left of the add sign.</param>
-		/// <param name="value2">Source <see cref="Point"/> on the right of the add sign.</param>
-		/// <returns>Sum of the points.</returns>
-		public static Point operator +(Point value1, Point value2)
+        /// <summary>
+        /// Adds two points.
+        /// </summary>
+        /// <param name="value1">Source <see cref="Point"/> on the left of the add sign.</param>
+        /// <param name="value2">Source <see cref="Point"/> on the right of the add sign.</param>
+        /// <returns>Sum of the points.</returns>
+        public static Point operator +(Point value1, Point value2)
 		{
 			return new Point(value1.X + value2.X, value1.Y + value2.Y);
 		}

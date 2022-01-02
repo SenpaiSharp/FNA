@@ -123,7 +123,8 @@ namespace Microsoft.Xna.Framework
 				clientWidth,
 				clientHeight,
 				wantsFullscreen,
-				screenDeviceName,
+				CenterOutOfFullScreen,
+                screenDeviceName,
 				ref deviceName
 			);
 			if (deviceName != prevName)

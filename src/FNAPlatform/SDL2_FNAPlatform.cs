@@ -420,7 +420,8 @@ namespace Microsoft.Xna.Framework
 			int clientWidth,
 			int clientHeight,
 			bool wantsFullscreen,
-			string screenDeviceName,
+			bool centerOutOfFullscreen,
+            string screenDeviceName,
 			ref string resultDeviceName
 		) {
 			bool center = false;
@@ -481,8 +482,9 @@ namespace Microsoft.Xna.Framework
 				center = true;
 			}
 
-			// Window always gets centered on changes, per XNA behavior
-			if (center)
+            // Window always gets centered on changes, per XNA behavior
+            // Unless we don't want it to, per our behavior.
+            if (center && centerOutOfFullscreen)
 			{
 				int pos = SDL.SDL_WINDOWPOS_CENTERED_DISPLAY(displayIndex);
 				SDL.SDL_SetWindowPosition(

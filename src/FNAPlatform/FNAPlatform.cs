@@ -188,7 +188,8 @@ namespace Microsoft.Xna.Framework
 			int clientWidth,
 			int clientHeight,
 			bool wantsFullscreen,
-			string screenDeviceName,
+			bool centerOutOfFullscreen,
+            string screenDeviceName,
 			ref string resultDeviceName
 		);
 		public static readonly ApplyWindowChangesFunc ApplyWindowChanges;

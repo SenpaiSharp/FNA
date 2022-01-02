@@ -124,14 +124,36 @@ namespace Microsoft.Xna.Framework
 			}
 		}
 
-		#endregion
-
-		#region Public Static Properties
-
 		/// <summary>
-		/// Returns a <see cref="Rectangle"/> with X=0, Y=0, Width=0, and Height=0.
-		/// </summary>
-		public static Rectangle Empty
+        /// The size of the rectangle, respresented by a Point. X = Width, Y = Height. 
+        /// </summary>
+        public Point Size
+        {
+            get
+            {
+                return new Point(Width, Height);
+            }
+        }
+
+        /// <summary>
+        /// The area of the rectangle. Width * Height
+        /// </summary>
+        public int Area
+        {
+            get
+            {
+                return Width * Height;
+            }
+        }
+
+        #endregion
+
+        #region Public Static Properties
+
+        /// <summary>
+        /// Returns a <see cref="Rectangle"/> with X=0, Y=0, Width=0, and Height=0.
+        /// </summary>
+        public static Rectangle Empty
 		{
 			get
 			{
@@ -206,17 +228,29 @@ namespace Microsoft.Xna.Framework
 			Height = height;
 		}
 
-		#endregion
+        /// <summary>
+        /// Creates a Rectangle with the specified position and size.
+        /// </summary>
+        /// <param name="position">Top left coordinate of the rectangle represented by Point.X and Point.Y </param>
+        /// <param name="size">The width and height of the rectangle. Point.X = Width, Point.Y = Height.</param>
+        public Rectangle(Point position, Point size)
+        {
+            X = position.X;
+            Y = position.Y;
+            Width = size.X;
+            Height = size.Y;
+        }
+        #endregion
 
-		#region Public Methods
+        #region Public Methods
 
-		/// <summary>
-		/// Gets whether or not the provided coordinates lie within the bounds of this <see cref="Rectangle"/>.
-		/// </summary>
-		/// <param name="x">The x coordinate of the point to check for containment.</param>
-		/// <param name="y">The y coordinate of the point to check for containment.</param>
-		/// <returns><c>true</c> if the provided coordinates lie inside this <see cref="Rectangle"/>. <c>false</c> otherwise.</returns>
-		public bool Contains(int x, int y)
+        /// <summary>
+        /// Gets whether or not the provided coordinates lie within the bounds of this <see cref="Rectangle"/>.
+        /// </summary>
+        /// <param name="x">The x coordinate of the point to check for containment.</param>
+        /// <param name="y">The y coordinate of the point to check for containment.</param>
+        /// <returns><c>true</c> if the provided coordinates lie inside this <see cref="Rectangle"/>. <c>false</c> otherwise.</returns>
+        public bool Contains(int x, int y)
 		{
 			return (	(this.X <= x) &&
 					(x < (this.X + this.Width)) &&

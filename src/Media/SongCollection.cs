@@ -57,11 +57,34 @@ namespace Microsoft.Xna.Framework.Media
 			IsDisposed = false;
 		}
 
-		#endregion
+        #endregion
 
-		#region Public Dispose Method
+		#region Static Constructors
+		//TODO: I am not entirely sure why this class and its functionality exists in a way that it can not really be used easily. For now, I am adding a couple of static constructors until someone tells me what the deal is.
+        /// <summary>
+        /// Creates a SongCollection to be played in MediaPlayer.
+        /// </summary>
+        /// <param name="songs">Songs that will make up the collection, in sequence.</param>
+        /// <returns>SongCollection</returns>
+        public static SongCollection CreatePlaylist(List<Song> songs)
+        {
+            return new SongCollection(songs);
+        }
 
-		public void Dispose()
+        /// <summary>
+        /// Creates a SongCollection to be played in MediaPlayer.
+        /// </summary>
+        /// <param name="songs">Songs that will make up the collection, in sequence.</param>
+        /// <returns>SongCollection</returns>
+        public static SongCollection CreatePlaylist(params Song[] songs)
+        {
+            return CreatePlaylist(new List<Song>(songs));
+        }
+        #endregion
+
+        #region Public Dispose Method
+
+        public void Dispose()
 		{
 			innerlist.Clear();
 			IsDisposed = true;

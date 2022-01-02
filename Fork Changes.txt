@@ -1,0 +1,15 @@
+﻿This fork has a few extra things added to it compared to the FNA main branch.
+Mostly for my convenience but if anything seems useful, feel free to take advantage of it.
+I will do my best to maintain this against the main branch.
+
+GameWindow has a property that can determine whether centering when coming out of fullscreen should happen, CenterOutOfFullScreen. It is true (enabled) by default, to mimick XNA behavoir.
+
+The SongCollection class has publicly accessible static constructors. I have never known why this seemingly fully functional class was sealed up beyond usability. Maybe there's a good reason but I don't care.
+
+Point class has a ToVector2 method that returns a Vector2 of (Point.X, Point.Y).
+
+Rectangle class includes Size and Area properties, for easy getting. Size is a Point where Point.X = Width and Point.Y = Height. I use Point as I'm personally of the mind of not having a bunch of different structs that contain the same collection of data, even if the collection technically represents fundamentally different ideas. Feel free to fork if you're not into it, it's what I did. Area is simply a Width * Height int.
+
+Rectangle class can also be constructed with two Points, representing position and size. See above.
+
+More to come! Regressions may happen if something changes with the main branch. No warranties and all that.
