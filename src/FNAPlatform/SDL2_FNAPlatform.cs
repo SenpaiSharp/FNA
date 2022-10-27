@@ -209,10 +209,13 @@ namespace Microsoft.Xna.Framework
 			}
 
 			// This _should_ be the first real SDL call we make...
-			SDL.SDL_Init(
+			if (SDL.SDL_Init(
 				SDL.SDL_INIT_VIDEO |
 				SDL.SDL_INIT_GAMECONTROLLER
-			);
+			) != 0)
+			{
+				throw new Exception("SDL_Init failed: " + SDL.SDL_GetError());
+			}
 
 			string videoDriver = SDL.SDL_GetCurrentVideoDriver();
 
@@ -574,13 +577,7 @@ namespace Microsoft.Xna.Framework
 			Rectangle result;
 			if ((SDL.SDL_GetWindowFlags(window) & (uint) SDL.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN) != 0)
 			{
-				/* FIXME: SDL2 bug!
-				 * SDL's a little weird about SDL_GetWindowSize.
-				 * If you call it early enough (for example,
-				 * Game.Initialize()), it reports outdated ints.
-				 * So you know what, let's just use this.
-				 * -flibit
-				 */
+				/* It's easier/safer to just use the display mode here */
 				SDL.SDL_DisplayMode mode;
 				SDL.SDL_GetCurrentDisplayMode(
 					SDL.SDL_GetWindowDisplayIndex(
@@ -2273,6 +2270,14 @@ namespace Microsoft.Xna.Framework
 			return SDL.SDL_GetNumTouchFingers(
 				SDL.SDL_GetTouchDevice(0)
 			);
+		}
+
+		#endregion
+
+		#region TextInput Methods
+		public static bool IsTextInputActive()
+		{
+			return SDL.SDL_IsTextInputActive() != 0;
 		}
 
 		#endregion
