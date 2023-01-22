@@ -1,6 +1,6 @@
 #region License
 /* FNA - XNA4 Reimplementation for Desktop Platforms
- * Copyright 2009-2022 Ethan Lee and the MonoGame Team
+ * Copyright 2009-2023 Ethan Lee and the MonoGame Team
  *
  * Released under the Microsoft Public License.
  * See LICENSE for details.
@@ -187,7 +187,7 @@ namespace Microsoft.Xna.Framework.Graphics
 				w = Math.Max(Width >> level, 1);
 				h = Math.Max(Height >> level, 1);
 			}
-			int elementSize = Marshal.SizeOf(typeof(T));
+			int elementSize = MarshalHelper.SizeOf<T>();
 			int requiredBytes = (w * h * GetFormatSize(Format)) / GetBlockSizeSquared(Format);
 			int availableBytes = elementCount * elementSize;
 			if (requiredBytes > availableBytes)
@@ -314,7 +314,7 @@ namespace Microsoft.Xna.Framework.Graphics
 				subH = rect.Value.Height;
 			}
 
-			int elementSizeInBytes = Marshal.SizeOf(typeof(T));
+			int elementSizeInBytes = MarshalHelper.SizeOf<T>();
 			ValidateGetDataFormat(Format, elementSizeInBytes);
 
 			GCHandle handle = GCHandle.Alloc(data, GCHandleType.Pinned);
