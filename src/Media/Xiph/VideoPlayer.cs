@@ -1,6 +1,6 @@
 #region License
 /* FNA - XNA4 Reimplementation for Desktop Platforms
- * Copyright 2009-2023 Ethan Lee and the MonoGame Team
+ * Copyright 2009-2024 Ethan Lee and the MonoGame Team
  *
  * Released under the Microsoft Public License.
  * See LICENSE for details.
@@ -71,7 +71,7 @@ namespace Microsoft.Xna.Framework.Media
 			);
 			unsafe
 			{
-				stateChangesPtr = Marshal.AllocHGlobal(
+				stateChangesPtr = FNAPlatform.Malloc(
 					sizeof(Effect.MOJOSHADER_effectStateChanges)
 				);
 			}
@@ -104,7 +104,7 @@ namespace Microsoft.Xna.Framework.Media
 			}
 			if (stateChangesPtr != IntPtr.Zero)
 			{
-				Marshal.FreeHGlobal(stateChangesPtr);
+				FNAPlatform.Free(stateChangesPtr);
 			}
 
 			// Delete the vertex buffer
@@ -186,7 +186,9 @@ namespace Microsoft.Xna.Framework.Media
 			currentDevice.SetVertexBuffers(vertBuffer);
 
 			// Prep target bindings
-			oldTargets = currentDevice.GetRenderTargets();
+			int oldTargetCount = currentDevice.GetRenderTargetsNoAllocEXT(null);
+			Array.Resize(ref oldTargets, oldTargetCount);
+			currentDevice.GetRenderTargetsNoAllocEXT(oldTargets);
 
 			unsafe
 			{
@@ -497,7 +499,7 @@ namespace Microsoft.Xna.Framework.Media
 			// Free the YUV buffer
 			if (yuvData != IntPtr.Zero)
 			{
-				Marshal.FreeHGlobal(yuvData);
+				FNAPlatform.Free(yuvData);
 				yuvData = IntPtr.Zero;
 			}
 
@@ -615,13 +617,13 @@ namespace Microsoft.Xna.Framework.Media
 			// Carve out YUV buffer before doing any decoder work
 			if (yuvData != IntPtr.Zero)
 			{
-				Marshal.FreeHGlobal(yuvData);
+				FNAPlatform.Free(yuvData);
 			}
 			yuvDataLen = (
 				(Video.yWidth * Video.yHeight) +
 				(Video.uvWidth * Video.uvHeight * 2)
 			);
-			yuvData = Marshal.AllocHGlobal(yuvDataLen);
+			yuvData = FNAPlatform.Malloc(yuvDataLen);
 
 			// Hook up the decoder to this player
 			InitializeTheoraStream();
